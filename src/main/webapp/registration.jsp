@@ -5,19 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login Form</title>
+<title>Registration Form</title>
 <style>
     body {
         font-family: Arial, sans-serif;
     }
     
     h1{
-    	margin-top: 50px;
-    	text-align: center;
+        margin-top: 50px;
+        text-align: center;
     }
 
     .form-container {
-    	text-align: center;
+        text-align: center;
         width: 300px;
         margin: 50px auto;
         padding: 20px;
@@ -58,9 +58,13 @@
 </style>
 </head>
 <body>
-	<h1>User Login</h1>
+    <h1>User Registration</h1>
     <div class="form-container">
-        <form id="loginForm" action="Login" method="Post">
+        <form id="registration" action="Registration" method="Post">
+            <div class="form-tab">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" required>
+            </div>
             <div class="form-tab">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
@@ -69,13 +73,14 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit" class="submit-btn">Submit</button><br/>
-            <a href="registration.jsp">register here</a>
+            <div class="form-tab">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="abc@gmail.com" name="email" required>
+            </div>
+            <button type="submit" class="submit-btn">Register</button><br/>
+            <a href="login.jsp">Already have an account? Login here</a>
         </form>
     </div>
-	<p style="color:red; text-align:center;"><%= request.getAttribute("error")==null? "":request.getAttribute("error") %></p>
+    <p style="color:red; text-align:center;"><%= request.getAttribute("error")==null? "":request.getAttribute("error") %></p>
 </body>
-
-</html>
-
 </html>

@@ -1,5 +1,5 @@
 package com.loginexample;
-
+import com.loginexample.dao.*;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,8 +15,8 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uname = request.getParameter("username");
 		String pass = request.getParameter("password");
-		
-		if(uname.equals("Rohan")&& pass.equals("asdf")) {
+		LoginDAO login = new LoginDAO();
+		if(login.checkcred(uname, pass)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("uname", uname);
 			response.sendRedirect("welcome.jsp");
@@ -25,5 +25,4 @@ public class Login extends HttpServlet {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}
-
 }
